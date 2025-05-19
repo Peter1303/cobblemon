@@ -25,6 +25,10 @@ jobs:
       with:
         cache-read-only: false  # 开启写入缓存
 
+    - name: Grant gradlew permission
+      working-directory: ./fabric-java  # 关键修正点
+      run: chmod +x gradlew  # 在目标目录下执行权限变更
+
     - name: Build fabric-java
       working-directory: ./fabric-java
       run: ./gradlew build --scan  # 启用构建扫描
